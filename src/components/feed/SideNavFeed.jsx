@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/sideNavLeaves.css";
+import "../../styles/sideNav.css";
 
 class SideNavFeed extends React.Component {
   // state = {  }

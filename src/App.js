@@ -6,6 +6,7 @@ import Dash from "./components/dash";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+
 import DocDash from "./components/doc/DocDash";
 import DocList from "./components/doc/DocList";
 import EditDoc from "./components/doc/EditDoc";
@@ -28,9 +29,7 @@ import SideNavMed from "./components/med/SideNavMed";
 class App extends Component {
   render() {     
     return (
-      <div>
-        <Route path="/inventory-management" component={Header} />
-        {/* <Route path="/inventory-management" component={Footer} /> */}
+      <div className="bg">
 
         <Route path="/inventory-management/doc-management" component={SideNavDoc} />
         <Route path="/inventory-management/feed-management" component={SideNavFeed} />
@@ -87,6 +86,9 @@ class App extends Component {
             component={EditMed}
           />
         </Switch>
+
+        <Route path="/inventory-management" component={Header} />
+        <Route path="/inventory-management" component={Footer} />
       </div>
     );
   }

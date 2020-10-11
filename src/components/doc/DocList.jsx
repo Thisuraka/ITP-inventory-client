@@ -154,7 +154,6 @@ export default class DocList extends Component {
             Add Details
           </Link>
 
-          
         </div>
         <div className="col-md-6">
           {currentDoc ? (

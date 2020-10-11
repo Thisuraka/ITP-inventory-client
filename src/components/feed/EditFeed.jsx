@@ -174,8 +174,8 @@ export default class EditFeed extends Component {
       <div>
         {currentFeed ? (
           //check
-          <div className="toVetTaskForm"> 
-            <h4>Doc</h4>
+          <div className="formBg2"> 
+            <h4>Feed</h4>
             <form>
               <div className="form-group">
                 <label htmlFor="supplierName">Supplier Name</label>

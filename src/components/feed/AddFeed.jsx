@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FeedManagementDataService from "../../services/feed.management.service";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "../";
 
@@ -100,13 +101,16 @@ export default class AddFeed extends Component {
   render() {
     return (
         // for css
-      <div className="toVetTaskForm">  
+      <div className="formBg">  
         {this.state.submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={this.newFeed}>
-              Add
+            <button className="btnSuc" onClick={this.newFeed}>
+              Add another
             </button>
+            <div className="btnbtn2">
+              <Link to={"/inventory-management/feed-management/list"} className="white" > View All </Link>
+            </div>
           </div>
         ) : (
           <div>
@@ -126,7 +130,7 @@ export default class AddFeed extends Component {
             <div className="form-group">
               <label htmlFor="date">Date</label>
               <input
-                type="text"
+                type="date"
                 className="form-control"
                 id="date"
                 required
@@ -139,7 +143,7 @@ export default class AddFeed extends Component {
             <div className="form-group">
               <label htmlFor="cost">Cost</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="cost"
                 required
@@ -152,7 +156,7 @@ export default class AddFeed extends Component {
             <div className="form-group">
               <label htmlFor="quantity">Quantity</label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="quantity"
                 required

@@ -174,7 +174,7 @@ export default class EditDoc extends Component {
       <div>
         {currentDoc ? (
           //check
-          <div className="toVetTaskForm"> 
+          <div className="formBg2"> 
             <h4>Feed</h4>
             <form>
               <div className="form-group">

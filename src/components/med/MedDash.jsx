@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/leaveDash.css";
+import "../../styles/Dash.css";
 
 class MedDash extends React.Component {
   // state = {  }

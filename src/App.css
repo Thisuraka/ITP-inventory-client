@@ -1,3 +1,10 @@
+.bg{
+  position: absolute;
+  background-image: url("C:/Users/Thisuraka/source/repos/InventoryClient/src/images/bg.jpg") ;
+  width:100%;
+  height:120%;
+}
+
 .list {
   text-align: left;
   max-width: 750px;
@@ -28,16 +35,61 @@
   display: block;
   left: 70%;
 }
+/* 152238 */
 
-.toVetTaskForm{
-  background-color:#152238;
+.formBg {
+  background-color:#656868;
   width: 800px;
-  height:500px;
+  height:600px;
   padding-left:40px;
   padding-right:40px;
-  padding-top: 80px;
-  margin-left:500px;
-  margin-top:200px;
+  padding-top: 70px;
+  margin-left:400px;
+  margin-top:140px;
+  /* margin-bottom:120px; */
   border-radius:10px;
   color: aliceblue;
 }
+
+.formBg2 {
+  background-color:#656868;
+  width: 800px;
+  height:600px;
+  padding-left:40px;
+  padding-right:40px;
+  padding-top: 30px;
+  margin-left:400px;
+  margin-top:140px;
+  /* margin-bottom:120px; */
+  border-radius:10px;
+  color: aliceblue;
+}
+
+.btnbtn2{
+  background-color:#109739;
+  padding-left: 29px;
+  padding-top: 6px;
+  margin-left:100px;
+  margin-top:40px;
+  border: 0px;
+  height: 38px;
+  width: 130px;
+  border-radius: 10px;
+}
+
+.btnSuc{
+  color: aliceblue;
+  background-color:#109739;
+  margin-left:100px;
+  margin-top:40px;
+  border: 0px;
+  height: 38px;
+  width: 130px;
+  border-radius: 10px;
+}
+
+.white{
+  color: aliceblue;
+}
+
+

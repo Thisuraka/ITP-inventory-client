@@ -174,8 +174,8 @@ export default class EditMed extends Component {
       <div>
         {currentMed ? (
           //check
-          <div className="toVetTaskForm"> 
-            <h4>Doc</h4>
+          <div className="formBg2"> 
+            <h4>Med</h4>
             <form>
               <div className="form-group">
                 <label htmlFor="brandName">Brand Name</label>
@@ -202,7 +202,7 @@ export default class EditMed extends Component {
               <div className="form-group">
                 <label htmlFor="cost"> Cost </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   id="cost"
                   value={currentMed.cost}
@@ -213,7 +213,7 @@ export default class EditMed extends Component {
               <div className="form-group">
                 <label htmlFor="quantity"> Quantity </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   id="quantity"
                   value={currentMed.quantity}
