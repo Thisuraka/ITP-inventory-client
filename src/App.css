@@ -1,0 +1,43 @@
+.list {
+  text-align: left;
+  max-width: 750px;
+  margin: auto;
+}
+
+.submit-form {
+  margin-top: 10%;
+  margin-left: 40%;
+  max-width: 300px;
+  /* margin: auto; */
+}
+
+.edit-form {
+  margin-top: 10%;
+  margin-left: 40%;
+  max-width: 300px;
+  /* margin: auto; */
+}
+
+.col-md-8 {
+  margin-top: 20%;
+  margin-left: 70%;
+}
+
+.col-md-6 {
+  width: 100%;
+  display: block;
+  left: 70%;
+}
+
+.toVetTaskForm{
+  background-color:#152238;
+  width: 800px;
+  height:500px;
+  padding-left:40px;
+  padding-right:40px;
+  padding-top: 80px;
+  margin-left:500px;
+  margin-top:200px;
+  border-radius:10px;
+  color: aliceblue;
+}
