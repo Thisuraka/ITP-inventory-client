@@ -7,7 +7,9 @@ import "../../App.css";
 export default class FeedList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchSupplierName = this.onChangeSearchSupplierName.bind(this);
+    this.onChangeSearchSupplierName = this.onChangeSearchSupplierName.bind(
+      this
+    );
     this.retrieveFeeds = this.retrieveFeeds.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveFeeds = this.setActiveFeeds.bind(this);
@@ -38,7 +40,7 @@ export default class FeedList extends Component {
     FeedManagementDataService.getAll()
       .then((response) => {
         this.setState({
-            feed: response.data,
+          feed: response.data,
         });
         console.log(response.data);
       })
@@ -87,15 +89,9 @@ export default class FeedList extends Component {
   }
 
   render() {
-    const {
-      searchSupplierName,
-      feed,
-      currentFeed,
-      currentIndex,
-    } = this.state;
+    const { searchSupplierName, feed, currentFeed, currentIndex } = this.state;
 
     return (
-      
       <div className="list row">
         <div className="col-md-8">
           <div className="input-group mb-3">
@@ -117,15 +113,24 @@ export default class FeedList extends Component {
             </div>
           </div>
         </div>
-        
+        <div className="btnsArrange">
+          <button className="listBtn1" onClick={this.removeAllFeeds}>
+            Remove All Feed Details
+          </button>
+          <Link
+            to={"/inventory-management/feed-management/add-feed"}
+            className="badge badge-warning"
+          >
+            Add Details
+          </Link>
+        </div>
         <div className="col-md-6">
           <h4>Feeds List</h4>
 
           <ul className="list-group">
             {feed &&
-
-            //need to check
-            feed.map((door, index) => (
+              //need to check
+              feed.map((door, index) => (
                 <li
                   className={
                     "list-group-item " +
@@ -135,26 +140,9 @@ export default class FeedList extends Component {
                   key={index}
                 >
                   {door.supplierName}
-                  
                 </li>
               ))}
           </ul>
-
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllFeeds}
-          >
-            Remove All Feeds Details
-          </button>
-          <Link
-          //check this
-            to={"/inventory-management/feed-management/add-feed"}
-            className="badge badge-warning"
-          >
-            Add Details
-          </Link>
-
-          
         </div>
         <div className="col-md-6">
           {currentFeed ? (
@@ -165,35 +153,35 @@ export default class FeedList extends Component {
                 <label>
                   <strong>Supplier Name:</strong>
                 </label>{" "}
-                {currentFeed.supplierName} 
+                {currentFeed.supplierName}
               </div>
 
               <div>
                 <label>
                   <strong>Date :</strong>
                 </label>{" "}
-                {currentFeed.date} 
+                {currentFeed.date}
               </div>
 
               <div>
                 <label>
                   <strong>Cost :</strong>
                 </label>{" "}
-                {currentFeed.cost} 
+                {currentFeed.cost}
               </div>
 
               <div>
                 <label>
                   <strong>Quantity :</strong>
                 </label>{" "}
-                {currentFeed.quantity} 
+                {currentFeed.quantity}
               </div>
 
               <div>
                 <label>
                   <strong>Type :</strong>
                 </label>{" "}
-                {currentFeed.type} 
+                {currentFeed.type}
               </div>
 
               <div>
@@ -218,7 +206,6 @@ export default class FeedList extends Component {
           )}
         </div>
       </div>
-      
     );
   }
 }

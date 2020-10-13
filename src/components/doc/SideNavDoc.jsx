@@ -15,8 +15,10 @@ class SideNavDoc extends React.Component {
           <br />
           <Link to="/inventory-management/doc-management/add-doc">Add DOC Entry</Link>
           <br />
+          <Link to="/inventory-management/doc-management/report
+          ">DOC report</Link>
           <br />
-          
+          <br />
           
         </div>
       </div>

@@ -7,7 +7,9 @@ import "../../App.css";
 export default class DocList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchSupplierName = this.onChangeSearchSupplierName.bind(this);
+    this.onChangeSearchSupplierName = this.onChangeSearchSupplierName.bind(
+      this
+    );
     this.retrieveDocs = this.retrieveDocs.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveDocs = this.setActiveDocs.bind(this);
@@ -87,15 +89,9 @@ export default class DocList extends Component {
   }
 
   render() {
-    const {
-      searchSupplierName,
-      doc,
-      currentDoc,
-      currentIndex,
-    } = this.state;
+    const { searchSupplierName, doc, currentDoc, currentIndex } = this.state;
 
     return (
-      
       <div className="list row">
         <div className="col-md-8">
           <div className="input-group mb-3">
@@ -117,15 +113,24 @@ export default class DocList extends Component {
             </div>
           </div>
         </div>
-        
+        <div className="btnsArrange">
+          <button className="listBtn1" onClick={this.removeAllDocs}>
+            Remove All Docs Details
+          </button>
+          <Link
+            to={"/inventory-management/doc-management/add-doc"}
+            className="badge badge-warning"
+          >
+            Add Details
+          </Link>
+        </div>
         <div className="col-md-6">
           <h4>DOCs List</h4>
 
           <ul className="list-group">
             {doc &&
-
-            //need to check
-            doc.map((door, index) => (
+              //need to check
+              doc.map((door, index) => (
                 <li
                   className={
                     "list-group-item " +
@@ -135,25 +140,9 @@ export default class DocList extends Component {
                   key={index}
                 >
                   {door.supplierName}
-                  
                 </li>
               ))}
           </ul>
-
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllDocs}
-          >
-            Remove All Docs Details
-          </button>
-          <Link
-          //check this
-            to={"/inventory-management/doc-management/add-doc"}
-            className="badge badge-warning"
-          >
-            Add Details
-          </Link>
-
         </div>
         <div className="col-md-6">
           {currentDoc ? (
@@ -164,35 +153,35 @@ export default class DocList extends Component {
                 <label>
                   <strong>Supplier Name:</strong>
                 </label>{" "}
-                {currentDoc.supplierName} 
+                {currentDoc.supplierName}
               </div>
 
               <div>
                 <label>
                   <strong>Date :</strong>
                 </label>{" "}
-                {currentDoc.date} 
+                {currentDoc.date}
               </div>
 
               <div>
                 <label>
                   <strong>Cost :</strong>
                 </label>{" "}
-                {currentDoc.cost} 
+                {currentDoc.cost}
               </div>
 
               <div>
                 <label>
                   <strong>Quantity :</strong>
                 </label>{" "}
-                {currentDoc.quantity} 
+                {currentDoc.quantity}
               </div>
 
               <div>
                 <label>
                   <strong>Breed :</strong>
                 </label>{" "}
-                {currentDoc.breed} 
+                {currentDoc.breed}
               </div>
 
               <div>
@@ -217,7 +206,6 @@ export default class DocList extends Component {
           )}
         </div>
       </div>
-      
     );
   }
 }

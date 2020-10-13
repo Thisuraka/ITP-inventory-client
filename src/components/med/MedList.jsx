@@ -87,15 +87,9 @@ export default class MedList extends Component {
   }
 
   render() {
-    const {
-      searchBrandName,
-      med,
-      currentMed,
-      currentIndex,
-    } = this.state;
+    const { searchBrandName, med, currentMed, currentIndex } = this.state;
 
     return (
-      
       <div className="list row">
         <div className="col-md-8">
           <div className="input-group mb-3">
@@ -117,15 +111,24 @@ export default class MedList extends Component {
             </div>
           </div>
         </div>
-        
+        <div className="btnsArrange">
+          <button className="listBtn1" onClick={this.removeAllMeds}>
+            Remove All Feed Details
+          </button>
+          <Link
+            to={"/inventory-management/med-management/add-med"}
+            className="badge badge-warning"
+          >
+            Add Details
+          </Link>
+        </div>
         <div className="col-md-6">
           <h4>Meds List</h4>
 
           <ul className="list-group">
             {med &&
-
-            //need to check
-            med.map((door, index) => (
+              //need to check
+              med.map((door, index) => (
                 <li
                   className={
                     "list-group-item " +
@@ -135,26 +138,9 @@ export default class MedList extends Component {
                   key={index}
                 >
                   {door.brandName}
-                  
                 </li>
               ))}
           </ul>
-
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllMeds}
-          >
-            Remove All Meds Details
-          </button>
-          <Link
-          //check this
-            to={"/inventory-management/med-management/add-med"}
-            className="badge badge-warning"
-          >
-            Add Details
-          </Link>
-
-          
         </div>
         <div className="col-md-6">
           {currentMed ? (
@@ -165,35 +151,35 @@ export default class MedList extends Component {
                 <label>
                   <strong>Brand Name:</strong>
                 </label>{" "}
-                {currentMed.brandName} 
+                {currentMed.brandName}
               </div>
 
               <div>
                 <label>
                   <strong>Date :</strong>
                 </label>{" "}
-                {currentMed.date} 
+                {currentMed.date}
               </div>
 
               <div>
                 <label>
                   <strong>Cost :</strong>
                 </label>{" "}
-                {currentMed.cost} 
+                {currentMed.cost}
               </div>
 
               <div>
                 <label>
                   <strong>Quantity :</strong>
                 </label>{" "}
-                {currentMed.quantity} 
+                {currentMed.quantity}
               </div>
 
               <div>
                 <label>
                   <strong>Type :</strong>
                 </label>{" "}
-                {currentMed.type} 
+                {currentMed.type}
               </div>
 
               <div>
@@ -218,7 +204,6 @@ export default class MedList extends Component {
           )}
         </div>
       </div>
-      
     );
   }
 }

@@ -6,6 +6,7 @@ import Dash from "./components/dash";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+import DocReport from "./components/doc/reportGet";
 
 import DocDash from "./components/doc/DocDash";
 import DocList from "./components/doc/DocList";
@@ -42,12 +43,12 @@ class App extends Component {
           <Route exact path="/inventory-management/med-management" component={MedDash} />
           <Route
             exact
-            path="/inventory-management/doc-management/list"  //check
+            path="/inventory-management/doc-management/list" 
             component={DocList}
           />
           <Route
             exact
-            path="/inventory-management/doc-management/add-doc"  //check
+            path="/inventory-management/doc-management/add-doc"  
             component={AddDoc}
           />
           <Route
@@ -57,7 +58,13 @@ class App extends Component {
           />
           <Route
             exact
-            path="/inventory-management/feed-management/list"  //check
+            path="/inventory-management/doc-management/report"  
+            component={DocReport}
+          />
+
+          <Route
+            exact
+            path="/inventory-management/feed-management/list"  
             component={FeedList}
           />
           <Route

@@ -7,7 +7,7 @@ class Dash extends React.Component {
   render() {
     return (
       <div>
-        <div className="topic">Inventory</div>
+        {/* <div className="topic">Inventory</div> */}
         <div className="tab" id="tab1">
           <Link to={"/inventory-management/doc-management"}>
            DOC 
