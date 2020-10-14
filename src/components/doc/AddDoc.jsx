@@ -14,14 +14,15 @@ export default class AddDoc extends Component {
     this.onChangeBreed = this.onChangeBreed.bind(this);
     this.saveDoc = this.saveDoc.bind(this);
     this.newDoc = this.newDoc.bind(this);
+    this.docDemo = this.docDemo.bind(this);
 
     this.state = {
       id: null,
       supplierName: "",
-      date: "" ,
-      cost: "" ,
-      quantity: "" ,
-      breed: "" ,
+      date: "",
+      cost: "",
+      quantity: "",
+      breed: "",
       complete: false,
       submitted: false,
     };
@@ -60,10 +61,10 @@ export default class AddDoc extends Component {
   saveDoc() {
     var data = {
       supplierName: this.state.supplierName,
-      date: this.state.date,   
-      cost: this.state.cost, 
-      quantity: this.state.quantity, 
-      breed: this.state.breed, 
+      date: this.state.date,
+      cost: this.state.cost,
+      quantity: this.state.quantity,
+      breed: this.state.breed,
     };
 
     DocManagementDataService.create(data)
@@ -89,10 +90,23 @@ export default class AddDoc extends Component {
     this.setState({
       id: null,
       supplierName: "",
-      date:"",
-      cost:"",
-      quantity:"",
-      breed:"",
+      date: "",
+      cost: "",
+      quantity: "",
+      breed: "",
+      complete: false,
+      submitted: false,
+    });
+  }
+
+  docDemo() {
+    this.setState({
+      id: null,
+      supplierName: "Crisbo",
+      date: "",
+      cost: 450,
+      quantity: 243,
+      breed: "Type B",
       complete: false,
       submitted: false,
     });
@@ -100,8 +114,8 @@ export default class AddDoc extends Component {
 
   render() {
     return (
-        // for css
-      <div className="formBg">  
+      // for css
+      <div className="formBg">
         {this.state.submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
@@ -109,14 +123,20 @@ export default class AddDoc extends Component {
               Add another
             </button>
             <div className="btnbtn2">
-              <Link to={"/inventory-management/doc-management/list"} className="white" > View All </Link>
+              <Link
+                to={"/inventory-management/doc-management/list"}
+                className="white"
+              >
+                {" "}
+                View All{" "}
+              </Link>
             </div>
           </div>
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="supplierName">Supplier Name</label>
-              <input
+              <label htmlFor="supplierName">Supplier Name</label> <br />
+              {/* <input
                 type="text"
                 className="form-control"
                 id="supplierName"
@@ -124,7 +144,17 @@ export default class AddDoc extends Component {
                 value={this.state.supplierName}
                 onChange={this.onChangeSupplierName}
                 name="supplierName"
-              />
+              /> */}
+              <select className="dropDown" onChange={this.onChangeSupplierName}>
+                <option value="none" selected disabled hidden>
+                  {" "}
+                  Select Supplier{" "}
+                </option>
+                <option value="St. Annes">St. Annes</option>
+                <option value="Bairaha">Bairaha</option>
+                <option value="Crisbo">Crisbo</option>
+                <option value="Prima">Prima</option>
+              </select>
             </div>
 
             <div className="form-group">
@@ -147,6 +177,7 @@ export default class AddDoc extends Component {
                 className="form-control"
                 id="cost"
                 required
+                min="1"
                 value={this.state.cost}
                 onChange={this.onChangeCost}
                 name="cost"
@@ -159,6 +190,7 @@ export default class AddDoc extends Component {
                 type="number"
                 className="form-control"
                 id="quantity"
+                min="1"
                 required
                 value={this.state.quantity}
                 onChange={this.onChangeQuantity}
@@ -167,8 +199,8 @@ export default class AddDoc extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="breed">Breed</label>
-              <input
+              <label htmlFor="breed">Breed</label> <br />
+              {/* <input
                 type="text"
                 className="form-control"
                 id="breed"
@@ -176,12 +208,25 @@ export default class AddDoc extends Component {
                 value={this.state.breed}
                 onChange={this.onChangeBreed}
                 name="breed"
-              />
+              /> */}
+              <select className="dropDown" onChange={this.onChangeBreed}>
+                <option value="none" selected disabled hidden>
+                  {" "}
+                  Select Breed{" "}
+                </option>
+                <option value="Type A">Type A</option>
+                <option value="Type B">Type B</option>
+                <option value="Type C">Type C</option>
+              </select>
             </div>
-
 
             <button onClick={this.saveDoc} className="btn btn-success">
               Submit
+            </button>
+            <br />
+            <br />
+            <button onClick={this.docDemo} className="btn btn-success">
+              Demo
             </button>
           </div>
         )}

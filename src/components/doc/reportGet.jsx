@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import DocManagementDataService from "../../services/doc.management.service";
 import GeneratePDF from "../../services/docReports";
-import RecordTable from "./reportTable";
+import ReportTable from "./reportTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 
 class Report extends Component {
   constructor(props) {
     super(props);
-    this.onChangeDate = this.onChangeDate.bind(this);
-    this.onChangeBreed = this.onChangeBreed.bind(this);
+    this.onChangeSearchDate = this.onChangeSearchDate.bind(this);
+    this.onChangeSearchBreed = this.onChangeSearchBreed.bind(this);
     this.retrieveRecords = this.retrieveRecords.bind(this);
     this.searchRecord = this.searchRecord.bind(this);
 
@@ -29,7 +29,7 @@ class Report extends Component {
     const searchDate = e.target.value;
 
     this.setState({
-        searchDate: searchDate,
+      searchDate: searchDate,
     });
   }
 
@@ -37,7 +37,7 @@ class Report extends Component {
     const searchBreed = e.target.value;
 
     this.setState({
-        searchBreed: searchBreed,
+      searchBreed: searchBreed,
     });
   }
 
@@ -45,7 +45,7 @@ class Report extends Component {
     DocManagementDataService.getAll()
       .then((response) => {
         this.setState({
-            doc: response.data,
+          doc: response.data,
         });
         console.log(response.data);
       })
@@ -81,11 +81,13 @@ class Report extends Component {
               onChange={this.onChangeSearchDate}
             />
             <select onChange={this.onChangeSearchBreed}>
-              <option value="week">Select Breed</option>
-              <option value="week1">Breed 1</option>
-              <option value="week2">Breed 2</option>
-              <option value="week3">Breed 3</option>
-              <option value="week4">Breed 4</option>
+              <option value="none" selected disabled hidden>
+                {" "}
+                Select Breed{" "}
+              </option>
+              <option value="Type A">Type A</option>
+              <option value="Type B">Type B</option>
+              <option value="Type C">Type C</option>
             </select>
             <div className="input-group-append">
               <button
@@ -105,7 +107,7 @@ class Report extends Component {
             Generate DOC Report
           </button>
         </div>
-        <RecordTable record={finalRecord} />
+        <ReportTable record={finalRecord} />
       </div>
     );
   }

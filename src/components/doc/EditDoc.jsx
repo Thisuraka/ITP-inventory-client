@@ -20,10 +20,10 @@ export default class EditDoc extends Component {
       currentDoc: {
         id: null,
         supplierName: "",
-        date: "" ,
-        cost: "" ,
-        quantity: "" ,
-        breed: "" ,
+        date: "",
+        cost: "",
+        quantity: "",
+        breed: "",
         complete: false,
       },
       message: "",
@@ -46,7 +46,7 @@ export default class EditDoc extends Component {
       };
     });
   }
- 
+
   onChangeDate(e) {
     const date = e.target.value;
 
@@ -98,7 +98,6 @@ export default class EditDoc extends Component {
       };
     });
   }
-
 
   getDoc(id) {
     DocManagementDataService.get(id)
@@ -174,24 +173,30 @@ export default class EditDoc extends Component {
       <div>
         {currentDoc ? (
           //check
-          <div className="formBg2"> 
+          <div className="formBg2">
             <h4>Feed</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="supplierName">Supplier Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="supplierName"
-                  value={currentDoc.supplierName}
+                <label htmlFor="supplierName">Supplier Name</label> <br />
+                <select
+                  className="dropDown"
                   onChange={this.onChangeSupplierName}
-                />
+                >
+                  <option value="none" selected disabled hidden>
+                    {" "}
+                    Select Supplier{" "}
+                  </option>
+                  <option value="St. Annes">St. Annes</option>
+                  <option value="Bairaha">Bairaha</option>
+                  <option value="Crisbo">Crisbo</option>
+                  <option value="Prima">Prima</option>
+                </select>
               </div>
 
               <div className="form-group">
                 <label htmlFor="contact">Date</label>
                 <input
-                  type="text"
+                  type="date"
                   className="form-control"
                   id="date"
                   value={currentDoc.date}
@@ -204,39 +209,43 @@ export default class EditDoc extends Component {
                 <input
                   type="text"
                   className="form-control"
+                  min="1"
                   id="cost"
                   value={currentDoc.cost}
                   onChange={this.onChangeCost}
                 />
-              </div> 
+              </div>
 
               <div className="form-group">
                 <label htmlFor="quantity"> Quantity </label>
                 <input
                   type="text"
                   className="form-control"
+                  min="1"
                   id="quantity"
                   value={currentDoc.quantity}
                   onChange={this.onChangeQuantity}
                 />
-              </div> 
+              </div>
 
               <div className="form-group">
-                <label htmlFor="breed"> Breed </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="breed"
-                  value={currentDoc.breed}
-                  onChange={this.onChangeBreed}
-                />
-              </div> 
+                <label htmlFor="breed"> Breed </label> <br />
+                <select className="dropDown" onChange={this.onChangeBreed}>
+                  <option value="none" selected disabled hidden>
+                    {" "}
+                    Select Breed{" "}
+                  </option>
+                  <option value="Type A">Type A</option>
+                  <option value="Type B">Type B</option>
+                  <option value="Type C">Type C</option>
+                </select>
+              </div>
 
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentDoc.complete ? "Valid" : "Invalid"}
+                {currentDoc.complete ? " Complete" : " Incomplete"}
               </div>
             </form>
 

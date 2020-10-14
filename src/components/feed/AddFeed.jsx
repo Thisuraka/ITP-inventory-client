@@ -18,10 +18,10 @@ export default class AddFeed extends Component {
     this.state = {
       id: null,
       supplierName: "",
-      date: "" ,
-      cost: "" ,
-      quantity: "" ,
-      type: "" ,
+      date: "",
+      cost: "",
+      quantity: "",
+      type: "",
       complete: false,
       submitted: false,
     };
@@ -60,10 +60,10 @@ export default class AddFeed extends Component {
   saveFeed() {
     var data = {
       supplierName: this.state.supplierName,
-      date: this.state.date,   
-      cost: this.state.cost, 
-      quantity: this.state.quantity, 
-      type: this.state.type, 
+      date: this.state.date,
+      cost: this.state.cost,
+      quantity: this.state.quantity,
+      type: this.state.type,
     };
 
     FeedManagementDataService.create(data)
@@ -89,10 +89,10 @@ export default class AddFeed extends Component {
     this.setState({
       id: null,
       supplierName: "",
-      date:"",
-      cost:"",
-      quantity:"",
-      type:"",
+      date: "",
+      cost: "",
+      quantity: "",
+      type: "",
       complete: false,
       submitted: false,
     });
@@ -100,8 +100,8 @@ export default class AddFeed extends Component {
 
   render() {
     return (
-        // for css
-      <div className="formBg">  
+      // for css
+      <div className="formBg">
         {this.state.submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
@@ -109,14 +109,20 @@ export default class AddFeed extends Component {
               Add another
             </button>
             <div className="btnbtn2">
-              <Link to={"/inventory-management/feed-management/list"} className="white" > View All </Link>
+              <Link
+                to={"/inventory-management/feed-management/list"}
+                className="white"
+              >
+                {" "}
+                View All{" "}
+              </Link>
             </div>
           </div>
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="supplierName">Supplier Name</label>
-              <input
+              <label htmlFor="supplierName">Supplier Name</label> <br />
+              {/* <input
                 type="text"
                 className="form-control"
                 id="supplierName"
@@ -124,7 +130,16 @@ export default class AddFeed extends Component {
                 value={this.state.supplierName}
                 onChange={this.onChangeSupplierName}
                 name="supplierName"
-              />
+              /> */}
+              <select className="dropDown" onChange={this.onChangeSupplierName}>
+                <option value="none" selected disabled hidden>
+                  {" "}
+                  Select Supplier{" "}
+                </option>
+                <option value="Prima">Prima</option>
+                <option value="CIC">CIC</option>
+                <option value="Gold Coin">Gold Coin</option>
+              </select>
             </div>
 
             <div className="form-group">
@@ -145,6 +160,7 @@ export default class AddFeed extends Component {
               <input
                 type="number"
                 className="form-control"
+                min="1"
                 id="cost"
                 required
                 value={this.state.cost}
@@ -158,6 +174,7 @@ export default class AddFeed extends Component {
               <input
                 type="number"
                 className="form-control"
+                min="1"
                 id="quantity"
                 required
                 value={this.state.quantity}
@@ -167,8 +184,8 @@ export default class AddFeed extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="type">Type</label>
-              <input
+              <label htmlFor="type">Type</label> <br />
+              {/* <input
                 type="text"
                 className="form-control"
                 id="type"
@@ -176,9 +193,17 @@ export default class AddFeed extends Component {
                 value={this.state.type}
                 onChange={this.onChangeType}
                 name="type"
-              />
+              /> */}
+              <select className="dropDown" onChange={this.onChangeType}>
+                <option value="none" selected disabled hidden>
+                  {" "}
+                  Select Type{" "}
+                </option>
+                <option value="Prima Booster">Prima Booster</option>
+                <option value="Company Starter">Company Starter</option>
+                <option value="Company Finisher">Company Finisher</option>
+              </select>
             </div>
-
 
             <button onClick={this.saveFeed} className="btn btn-success">
               Submit

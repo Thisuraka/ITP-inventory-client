@@ -18,10 +18,10 @@ export default class AddMed extends Component {
     this.state = {
       id: null,
       brandName: "",
-      date: "" ,
-      cost: "" ,
-      quantity: "" ,
-      type: "" ,
+      date: "",
+      cost: "",
+      quantity: "",
+      type: "",
       complete: false,
       submitted: false,
     };
@@ -60,10 +60,10 @@ export default class AddMed extends Component {
   saveMed() {
     var data = {
       brandName: this.state.brandName,
-      date: this.state.date,   
-      cost: this.state.cost, 
-      quantity: this.state.quantity, 
-      type: this.state.type, 
+      date: this.state.date,
+      cost: this.state.cost,
+      quantity: this.state.quantity,
+      type: this.state.type,
     };
 
     MedManagementDataService.create(data)
@@ -89,10 +89,10 @@ export default class AddMed extends Component {
     this.setState({
       id: null,
       brandName: "",
-      date:"",
-      cost:"",
-      quantity:"",
-      type:"",
+      date: "",
+      cost: "",
+      quantity: "",
+      type: "",
       complete: false,
       submitted: false,
     });
@@ -100,30 +100,36 @@ export default class AddMed extends Component {
 
   render() {
     return (
-        // for css
-      <div className="formBg">  
+      // for css
+      <div className="formBg">
         {this.state.submitted ? (
           <div>
             <button className="btnSuc" onClick={this.newMed}>
               Add another
             </button>
             <div className="btnbtn2">
-              <Link to={"/inventory-management/med-management/list"} className="white" > View All </Link>
+              <Link
+                to={"/inventory-management/med-management/list"}
+                className="white"
+              >
+                {" "}
+                View All{" "}
+              </Link>
             </div>
           </div>
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="brandName">Brand Name</label>
-              <input
-                type="text"
-                className="form-control"
-                id="brandName"
-                required
-                value={this.state.brandName}
-                onChange={this.onChangeBrandName}
-                name="brandName"
-              />
+              <label htmlFor="brandName">Brand Name</label> <br />
+              <select className="dropDown" onChange={this.onChangeBrandName}>
+                <option value="none" selected disabled hidden>
+                  {" "}
+                  Select Brand{" "}
+                </option>
+                <option value="Benzathine ">Benzathine </option>
+                <option value="Valbazen">Valbazen</option>
+                <option value="Amoxi">Amoxi</option>
+              </select>
             </div>
 
             <div className="form-group">
@@ -144,6 +150,7 @@ export default class AddMed extends Component {
               <input
                 type="text"
                 className="form-control"
+                min="1"
                 id="cost"
                 required
                 value={this.state.cost}
@@ -157,6 +164,7 @@ export default class AddMed extends Component {
               <input
                 type="text"
                 className="form-control"
+                min="1"
                 id="quantity"
                 required
                 value={this.state.quantity}
@@ -167,17 +175,17 @@ export default class AddMed extends Component {
 
             <div className="form-group">
               <label htmlFor="type">Type</label>
-              <input
-                type="text"
-                className="form-control"
-                id="type"
-                required
-                value={this.state.type}
-                onChange={this.onChangeType}
-                name="type"
-              />
+              <br />
+              <select className="dropDown" onChange={this.onChangeType}>
+                <option value="none" selected disabled hidden>
+                  {" "}
+                  Select Type{" "}
+                </option>
+                <option value="Penicillins">Penicillins</option>
+                <option value="Vinegars">Vinegars</option>
+                <option value="Chemical">Chemical</option>
+              </select>
             </div>
-
 
             <button onClick={this.saveMed} className="btn btn-success">
               Submit

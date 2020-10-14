@@ -38,7 +38,7 @@
 /* 152238 */
 
 .formBg {
-  background-color:#656868;
+  background-color:#b2b8b8;
   width: 800px;
   height:600px;
   padding-left:40px;
@@ -52,7 +52,7 @@
 }
 
 .formBg2 {
-  background-color:#656868;
+  background-color:#b2b8b8;
   width: 800px;
   height:600px;
   padding-left:40px;
@@ -111,3 +111,8 @@
   margin-bottom: 20px;
 }
 
+.dropDown{
+  border: 0px;
+  height: 38px;
+  width: 300px;
+}

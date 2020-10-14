@@ -20,10 +20,10 @@ export default class EditFeed extends Component {
       currentFeed: {
         id: null,
         supplierName: "",
-        date: "" ,
-        cost: "" ,
-        quantity: "" ,
-        type: "" ,
+        date: "",
+        cost: "",
+        quantity: "",
+        type: "",
         complete: false,
       },
       message: "",
@@ -46,7 +46,7 @@ export default class EditFeed extends Component {
       };
     });
   }
- 
+
   onChangeDate(e) {
     const date = e.target.value;
 
@@ -99,12 +99,11 @@ export default class EditFeed extends Component {
     });
   }
 
-
   getFeed(id) {
     FeedManagementDataService.get(id)
       .then((response) => {
         this.setState({
-            currentFeed: response.data,
+          currentFeed: response.data,
         });
         console.log(response.data);
       })
@@ -127,7 +126,7 @@ export default class EditFeed extends Component {
     FeedManagementDataService.update(this.state.currentFeed.id, data)
       .then((response) => {
         this.setState((prevState) => ({
-            currentFeed: {
+          currentFeed: {
             ...prevState.currentFeed,
             complete: status,
           },
@@ -160,7 +159,9 @@ export default class EditFeed extends Component {
     FeedManagementDataService.delete(this.state.currentFeed.id)
       .then((response) => {
         console.log(response.data);
-        this.props.history.push("/inventory-management/feed-management/feeds/list");
+        this.props.history.push(
+          "/inventory-management/feed-management/feeds/list"
+        );
       })
       .catch((e) => {
         console.log(e);
@@ -174,18 +175,30 @@ export default class EditFeed extends Component {
       <div>
         {currentFeed ? (
           //check
-          <div className="formBg2"> 
+          <div className="formBg2">
             <h4>Feed</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="supplierName">Supplier Name</label>
-                <input
+                <label htmlFor="supplierName">Supplier Name</label> <br />
+                {/* <input
                   type="text"
                   className="form-control"
                   id="supplierName"
                   value={currentFeed.supplierName}
                   onChange={this.onChangeSupplierName}
-                />
+                /> */}
+                <select
+                  className="dropDown"
+                  onChange={this.onChangeSupplierName}
+                >
+                  <option value="none" selected disabled hidden>
+                    {" "}
+                    Select Supplier{" "}
+                  </option>
+                  <option value="Prima">Prima</option>
+                  <option value="CIC">CIC</option>
+                  <option value="Gold Coin">Gold Coin</option>
+                </select>
               </div>
 
               <div className="form-group">
@@ -204,39 +217,50 @@ export default class EditFeed extends Component {
                 <input
                   type="text"
                   className="form-control"
+                  min="1"
                   id="cost"
                   value={currentFeed.cost}
                   onChange={this.onChangeCost}
                 />
-              </div> 
+              </div>
 
               <div className="form-group">
                 <label htmlFor="quantity"> Quantity </label>
                 <input
                   type="text"
                   className="form-control"
+                  min="1"
                   id="quantity"
                   value={currentFeed.quantity}
                   onChange={this.onChangeQuantity}
                 />
-              </div> 
+              </div>
 
               <div className="form-group">
-                <label htmlFor="type"> Type </label>
-                <input
+                <label htmlFor="type"> Type </label> <br />
+                {/* <input
                   type="text"
                   className="form-control"
                   id="type"
                   value={currentFeed.type}
                   onChange={this.onChangetype}
-                />
-              </div> 
+                /> */}
+                <select className="dropDown" onChange={this.onChangetype}>
+                  <option value="none" selected disabled hidden>
+                    {" "}
+                    Select Type{" "}
+                  </option>
+                  <option value="Prima Booster">Prima Booster</option>
+                  <option value="Company Starter">Company Starter</option>
+                  <option value="Company Finisher">Company Finisher</option>
+                </select>
+              </div>
 
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentFeed.complete ? "Valid" : "Invalid"}
+                {currentFeed.complete ? " Complete" : " Incomplete"}
               </div>
             </form>
 

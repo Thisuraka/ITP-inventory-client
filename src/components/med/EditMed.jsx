@@ -20,10 +20,10 @@ export default class EditMed extends Component {
       currentMed: {
         id: null,
         brandName: "",
-        date: "" ,
-        cost: "" ,
-        quantity: "" ,
-        type: "" ,
+        date: "",
+        cost: "",
+        quantity: "",
+        type: "",
         complete: false,
       },
       message: "",
@@ -46,7 +46,7 @@ export default class EditMed extends Component {
       };
     });
   }
- 
+
   onChangeDate(e) {
     const date = e.target.value;
 
@@ -98,7 +98,6 @@ export default class EditMed extends Component {
       };
     });
   }
-
 
   getMed(id) {
     MedManagementDataService.get(id)
@@ -174,18 +173,20 @@ export default class EditMed extends Component {
       <div>
         {currentMed ? (
           //check
-          <div className="formBg2"> 
+          <div className="formBg2">
             <h4>Med</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="brandName">Brand Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="brandName"
-                  value={currentMed.brandName}
-                  onChange={this.onChangeBrandName}
-                />
+                <label htmlFor="brandName">Brand Name</label> <br />
+                <select className="dropDown" onChange={this.onChangeBrandName}>
+                  <option value="none" selected disabled hidden>
+                    {" "}
+                    Select Brand{" "}
+                  </option>
+                  <option value="Benzathine ">Benzathine </option>
+                  <option value="Valbazen">Valbazen</option>
+                  <option value="Amoxi">Amoxi</option>
+                </select>
               </div>
 
               <div className="form-group">
@@ -205,10 +206,11 @@ export default class EditMed extends Component {
                   type="number"
                   className="form-control"
                   id="cost"
+                  min="1"
                   value={currentMed.cost}
                   onChange={this.onChangeCost}
                 />
-              </div> 
+              </div>
 
               <div className="form-group">
                 <label htmlFor="quantity"> Quantity </label>
@@ -216,27 +218,30 @@ export default class EditMed extends Component {
                   type="number"
                   className="form-control"
                   id="quantity"
+                  min="1"
                   value={currentMed.quantity}
                   onChange={this.onChangeQuantity}
                 />
-              </div> 
+              </div>
 
               <div className="form-group">
-                <label htmlFor="type"> Type </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="type"
-                  value={currentMed.type}
-                  onChange={this.onChangetype}
-                />
-              </div> 
+                <label htmlFor="type"> Type </label> <br />
+                <select className="dropDown" onChange={this.onChangetype}>
+                  <option value="none" selected disabled hidden>
+                    {" "}
+                    Select Type{" "}
+                  </option>
+                  <option value="Penicillins">Penicillins</option>
+                  <option value="Vinegars">Vinegars</option>
+                  <option value="Chemical">Chemical</option>
+                </select>
+              </div>
 
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
                 </label>
-                {currentMed.complete ? "Valid" : "Invalid"}
+                {currentMed.complete ? " Complete" : " Incomplete"}
               </div>
             </form>
 
