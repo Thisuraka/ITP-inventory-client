@@ -1,3 +1,10 @@
+.test{
+  background-color:#000000;
+  width: 800px;
+  height:600px;
+}
+
+
 .bg{
   position: absolute;
   background-image: url("C:/Users/Thisuraka/source/repos/InventoryClient/src/images/bg.jpg") ;

@@ -8,7 +8,7 @@ import "../../App.css";
 class Report extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchDate = this.onChangeSearchDate.bind(this);
+    // this.onChangeSearchDate = this.onChangeSearchDate.bind(this);
     this.onChangeSearchBreed = this.onChangeSearchBreed.bind(this);
     this.retrieveRecords = this.retrieveRecords.bind(this);
     this.searchRecord = this.searchRecord.bind(this);
@@ -16,7 +16,7 @@ class Report extends Component {
     this.state = {
       doc: [],
       record: [],
-      searchDate: "",
+      // searchDate: "",
       searchBreed: "",
     };
   }
@@ -25,13 +25,13 @@ class Report extends Component {
     this.retrieveRecords();
   }
 
-  onChangeSearchDate(e) {
-    const searchDate = e.target.value;
+  // onChangeSearchDate(e) {
+  //   const searchDate = e.target.value;
 
-    this.setState({
-      searchDate: searchDate,
-    });
-  }
+  //   this.setState({
+  //     searchDate: searchDate,
+  //   });
+  // }
 
   onChangeSearchBreed(e) {
     const searchBreed = e.target.value;
@@ -57,29 +57,29 @@ class Report extends Component {
   searchRecord() {
     this.retrieveRecords();
 
-    const filtered = this.state.records
-      .filter((record) => record.date === this.state.searchDate)
+    const filtered = this.state.doc
+      // .filter((record) => record.date === this.state.searchDate)
       .filter((record) => record.breed === this.state.searchBreed);
 
     this.setState({
-      finalRecord: filtered,
+      record: filtered,
     });
   }
 
   render() {
-    const { searchDate, finalRecord } = this.state;
+    const {record } = this.state; //searchDate
     return (
-      <div>
+      <div className="test">
         <div className="col-md-5">
           <div className="input-group mb-3">
-            <input
+            {/* <input
               type="date"
               className="form-control"
               id="date"
               required
               value={searchDate}
               onChange={this.onChangeSearchDate}
-            />
+            /> */}
             <select onChange={this.onChangeSearchBreed}>
               <option value="none" selected disabled hidden>
                 {" "}
@@ -102,12 +102,12 @@ class Report extends Component {
 
           <button
             className="btn btn-primary"
-            onClick={() => GeneratePDF(finalRecord)}
+            onClick={() => GeneratePDF(record)}
           >
             Generate DOC Report
           </button>
         </div>
-        <ReportTable record={finalRecord} />
+        <ReportTable record={record} />
       </div>
     );
   }
